@@ -2,13 +2,8 @@ package nestingstack
 
 /*
 
-Create and modify a stack of type token. 
+Used by the parser to ensure parentheses are balanced. 
 
-With respect to the calculator: used to ensure every opening '(' has a corresponding ')' The interface 
-can be used for any necessary checks for balance between two points in the code. 
-
-- e.g.; in the future, can be used for balancing entry and exit points e.g., function calls and return
-        values, calling address and return address, and things of that nature. 
 */
 
 import (

@@ -14,4 +14,4 @@ The packages in this calculator:
 - `interpreter`: traverses the AST provided by the parser and calculates the result 
 - `nestingstack`: used to ensure parentheses are balanced. 
 
-Also included: `main_test.go` that extensively tests various syntax cases. Use `go test` to run.
+Also included: `main_test.go` that extensively tests for syntax error cases and ensures order of operations is followed. Use `go test` to run.

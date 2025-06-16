@@ -1,11 +1,5 @@
 package main 
 
-/*
-
-All cases pass except for trailing ')' --> tomorrow add stack
-
-*/
-
 import (
     "calculator/lexer"
     "calculator/parser"
@@ -45,6 +39,8 @@ func TestInterpreter(t *testing.T) {
         {"-3 + 4", true, 0},
         {"0 * 5", true, 0},
         {"2 * 3", true, 0},
+
+		// Additional cases with descriptions
         {"3 + 5", true, 8},                  // basic addition
         {"2 - 9", true, -7},                 // basic subtraction
         {"4152 - 109", true, 4043},          // multi digits
@@ -58,11 +54,11 @@ func TestInterpreter(t *testing.T) {
         {"(28 - 18) * 2 + 3", true, 23},     // correct order with brackets
         {"2 * 16 - 8 / 2 - 1", true, 27},    // correct order, multiplication and division
         {"2 * (16 -8) / 2 - 1", true, 7},    // correct order, multiplcation and division with parenthesis
-        {"(2 +  18) * (3 + 5 )", true, 160}, // multiple parenthesis */
-        {"1 *+ 2", true, 2},    // multiplication and + number
-        {"+ 9 ", true, 9},      // missing leading integer
-        {"- 9", true, -9},       // same as above
-        {"1 ++ 2", true, 3},    // double addition symbols
+        {"(2 +  18) * (3 + 5 )", true, 160}, // multiple parenthesis 
+        {"1 *+ 2", true, 2},    			 // multiplication and + number
+        {"+ 9 ", true, 9},      			 // missing leading integer (unary op)
+        {"- 9", true, -9},       			 // same as above
+        {"1 ++ 2", true, 3},                 // double addition symbols
 
 
 
@@ -72,7 +68,7 @@ func TestInterpreter(t *testing.T) {
         {"(. + 3)", false, 0},   // invalid character after parenthesis
         {"1 + ", false, 0},      // missing integer after +
         {"+ ", false, 0},        // no integers
-        {"* 9 + 2", false, 0},   // missing leaing integer 
+        {"* 9 + 2", false, 0},   // missing leading integer 
         {"(", false, 0},         // missing integer, etc. after (
         {"(1+2) +", false, 0},   // missing integer at end 
         {"()", false, 0},        // missing integers between ()'s*/
@@ -80,7 +76,7 @@ func TestInterpreter(t *testing.T) {
         {"1 * 2) ", false, 0},   // trailing ) 
         {"(2 * 4", false, 0},    // missing closing parenthesis
         {"((", false, 0},        // missing integers and )
-        {"(1+2)) + 13", false, 0}, // imbalanced
+        {"(1+2)) + 13", false, 0}, // imbalanced parenthesis
 
     }
 
